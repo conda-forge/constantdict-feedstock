@@ -1,5 +1,5 @@
 {% set name = "constantdict" %}
-{% set version = "2025.2" %}
+{% set version = "2025.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/matthiasdiener/constantdict/archive/v{{ version }}.tar.gz
-  sha256: 68403cd8398bca488250d30292abc187f5fddc89f570078892ca170d3b1c6382
+  sha256: 79fef40f895faaf78ad63c0c7d6c35523d913025971a8aeff4d3bc9dbf9835ca
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
