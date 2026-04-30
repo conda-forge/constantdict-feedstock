@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  name: constantdict
+  version: "2025.3"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/matthiasdiener/constantdict/archive/v${{ version }}.tar.gz
+  sha256: 79fef40f895faaf78ad63c0c7d6c35523d913025971a8aeff4d3bc9dbf9835ca
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatchling
+    - pip
+  run:
+    - importlib-metadata
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - constantdict
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: An immutable dict class.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/matthiasdiener/constantdict
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
+    - matthiasdiener
+    - inducer
